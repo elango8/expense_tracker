@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Track your expenses smartly with our modern expense tracker. Monitor spending, analyze patterns, and save money.">
+    <title>ExpenseTracker - Track Your Expenses Smartly</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+
+<body class="landing-page">
+    <!-- Navigation -->
+    <nav class="landing-nav" id="landing-nav">
+        <a href="index.html" class="landing-nav-logo">
+            <i class="fas fa-wallet"></i>
+            <span>Expense<span style="color: var(--primary-500)">Tracker</span></span>
+        </a>
+        <div class="landing-nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="pages/dashboard.html">Dashboard</a>
+        </div>
+        <div class="landing-nav-actions">
+            <button class="theme-toggle" aria-label="Toggle theme">
+                <div class="toggle-track">
+                    <span class="toggle-icon sun-icon"><i class="fas fa-sun"></i></span>
+                    <span class="toggle-thumb"></span>
+                </div>
+            </button>
+            <a href="pages/dashboard.html" class="btn btn-primary">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content animate-fade-in-up">
+                <div class="hero-badge">
+                    <i class="fas fa-sparkles"></i>
+                    <span>Smart Financial Management</span>
+                </div>
+                <h1 class="hero-title">
+                    Track Your Expenses <span>Smartly</span>
+                </h1>
+                <p class="hero-description">
+                    Take control of your finances with our intuitive expense tracker.
+                    Monitor spending, analyze patterns, and achieve your financial goals effortlessly.
+                </p>
+                <div class="hero-actions">
+                    <a href="pages/dashboard.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-rocket"></i>
+                        Get Started Free
+                    </a>
+                    <a href="pages/dashboard.html" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-chart-line"></i>
+                        View Dashboard
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <p class="hero-stat-value">100%</p>
+                        <p class="hero-stat-label">Free to Use</p>
+                    </div>
+                    <div class="hero-stat">
+                        <p class="hero-stat-value">Secure</p>
+                        <p class="hero-stat-label">Local Storage</p>
+                    </div>
+                    <div class="hero-stat">
+                        <p class="hero-stat-value">Real-time</p>
+                        <p class="hero-stat-label">Analytics</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual animate-fade-in delay-2">
+                <div class="hero-image-wrapper">
+                    <!-- Dashboard Preview Mockup -->
+                    <svg class="hero-mockup" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="300" rx="12" fill="var(--bg-card)" />
+                        <rect x="20" y="20" width="80" height="260" rx="8" fill="var(--bg-tertiary)" />
+                        <rect x="120" y="20" width="260" height="60" rx="8" fill="var(--bg-tertiary)" />
+                        <rect x="120" y="100" width="120" height="80" rx="8" fill="var(--primary-100)" />
+                        <rect x="260" y="100" width="120" height="80" rx="8" fill="var(--success-light)" />
+                        <rect x="120" y="200" width="260" height="80" rx="8" fill="var(--bg-tertiary)" />
+                        <circle cx="180" cy="140" r="20" fill="var(--primary-500)" />
+                        <circle cx="320" cy="140" r="20" fill="var(--success)" />
+                    </svg>
+
+                    <!-- Floating Cards -->
+                    <div class="hero-float-card card-1">
+                        <div class="flex items-center gap-3">
+                            <div
+                                style="width: 40px; height: 40px; background: var(--success-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--success);">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            <div>
+                                <p style="font-size: 12px; color: var(--text-secondary);">Income</p>
+                                <p style="font-weight: 600; color: var(--success);">+$5,230</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-float-card card-2">
+                        <div class="flex items-center gap-3">
+                            <div
+                                style="width: 40px; height: 40px; background: var(--danger-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--danger);">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div>
+                                <p style="font-size: 12px; color: var(--text-secondary);">Expenses</p>
+                                <p style="font-weight: 600; color: var(--danger);">-$2,150</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header animate-fade-in-up">
+            <span class="section-label">Features</span>
+            <h2 class="section-title">Everything You Need to Manage Finances</h2>
+            <p class="section-description">
+                Powerful tools designed to help you track, analyze, and optimize your spending habits.
+            </p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card animate-fade-in-up delay-1">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3 class="feature-title">Visual Analytics</h3>
+                <p class="feature-description">
+                    Beautiful charts and graphs to visualize your spending patterns and identify trends.
+                </p>
+            </div>
+            <div class="feature-card animate-fade-in-up delay-2">
+                <div class="feature-icon">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <h3 class="feature-title">Smart Categories</h3>
+                <p class="feature-description">
+                    Organize expenses by category to understand where your money goes each month.
+                </p>
+            </div>
+            <div class="feature-card animate-fade-in-up delay-3">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">100% Private</h3>
+                <p class="feature-description">
+                    Your data stays on your device. No servers, no tracking, complete privacy.
+                </p>
+            </div>
+            <div class="feature-card animate-fade-in-up delay-4">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 class="feature-title">Responsive Design</h3>
+                <p class="feature-description">
+                    Access your expense tracker from any device - desktop, tablet, or mobile.
+                </p>
+            </div>
+            <div class="feature-card animate-fade-in-up delay-5">
+                <div class="feature-icon">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <h3 class="feature-title">Dark Mode</h3>
+                <p class="feature-description">
+                    Easy on the eyes with a beautiful dark theme option for night use.
+                </p>
+            </div>
+            <div class="feature-card animate-fade-in-up">
+                <div class="feature-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3 class="feature-title">Export Data</h3>
+                <p class="feature-description">
+                    Export your financial data anytime for backup or analysis in other tools.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="features" id="how-it-works" style="background: var(--bg-primary);">
+        <div class="section-header">
+            <span class="section-label">How It Works</span>
+            <h2 class="section-title">Start Tracking in 3 Simple Steps</h2>
+        </div>
+        <div class="features-grid" style="max-width: 900px;">
+            <div class="feature-card" style="text-align: left;">
+                <div style="font-size: 48px; font-weight: 700; color: var(--primary-200); margin-bottom: 16px;">01</div>
+                <h3 class="feature-title">Add Expenses</h3>
+                <p class="feature-description">
+                    Quickly log your expenses with category, amount, and payment method.
+                </p>
+            </div>
+            <div class="feature-card" style="text-align: left;">
+                <div style="font-size: 48px; font-weight: 700; color: var(--primary-200); margin-bottom: 16px;">02</div>
+                <h3 class="feature-title">View Dashboard</h3>
+                <p class="feature-description">
+                    Get an overview of your finances with interactive charts and summaries.
+                </p>
+            </div>
+            <div class="feature-card" style="text-align: left;">
+                <div style="font-size: 48px; font-weight: 700; color: var(--primary-200); margin-bottom: 16px;">03</div>
+                <h3 class="feature-title">Analyze & Save</h3>
+                <p class="feature-description">
+                    Understand your spending patterns and make smarter financial decisions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content animate-fade-in-up">
+            <h2 class="cta-title">Ready to Take Control of Your Finances?</h2>
+            <p class="cta-description">
+                Start tracking your expenses today. It's free, private, and takes just seconds to begin.
+            </p>
+            <a href="pages/dashboard.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-rocket"></i>
+                Get Started Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+        <p>© 2024 ExpenseTracker. Built with <i class="fas fa-heart" style="color: var(--danger);"></i> for better
+            financial management.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('landing-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Analytics - View detailed spending analysis and trends">
+    <title>Analytics | ExpenseTracker</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+
+<body>
+    <div class="app-layout" id="analytics-page">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" class="sidebar-logo">
+                    <div class="sidebar-logo-icon"><i class="fas fa-wallet"></i></div>
+                    <span class="sidebar-logo-text">Expense<span>Tracker</span></span>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Main Menu</span>
+                    <a href="dashboard.html" class="nav-item"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                    <a href="add-expense.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>Add
+                            Expense</span></a>
+                    <a href="transactions.html" class="nav-item"><i
+                            class="fas fa-exchange-alt"></i><span>Transactions</span></a>
+                    <a href="analytics.html" class="nav-item active"><i
+                            class="fas fa-chart-bar"></i><span>Analytics</span></a>
+                </div>
+                <div class="nav-section">
+                    <span class="nav-section-title">Settings</span>
+                    <a href="settings.html" class="nav-item"><i class="fas fa-cog"></i><span>Settings</span></a>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar">U</div>
+                    <div class="sidebar-user-info">
+                        <p class="sidebar-user-name">User</p>
+                        <p class="sidebar-user-role">Personal Account</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="sidebar-overlay"></div>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+                    <h1 class="page-title">Analytics</h1>
+                </div>
+                <div class="header-right">
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <div class="toggle-track">
+                            <span class="toggle-icon sun-icon"><i class="fas fa-sun"></i></span>
+                            <span class="toggle-icon moon-icon"><i class="fas fa-moon"></i></span>
+                            <span class="toggle-thumb"></span>
+                        </div>
+                    </button>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <!-- Summary Stats -->
+                <div class="stats-row mb-8">
+                    <div class="stat-card expense">
+                        <div class="stat-card-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <p class="stat-card-label">This Month</p>
+                        <p class="stat-card-value" id="monthly-spend">$0.00</p>
+                        <div id="monthly-change" class="trend-indicator"></div>
+                    </div>
+                    <div class="stat-card" style="border-left-color: var(--info);">
+                        <div class="stat-card-icon" style="background: var(--info-light); color: var(--info);"><i
+                                class="fas fa-chart-line"></i></div>
+                        <p class="stat-card-label">Daily Average</p>
+                        <p class="stat-card-value" id="avg-daily">$0.00</p>
+                    </div>
+                    <div class="stat-card" style="border-left-color: var(--accent-500);">
+                        <div class="stat-card-icon" style="background: var(--accent-100); color: var(--accent-600);"><i
+                                class="fas fa-star"></i></div>
+                        <p class="stat-card-label">Top Category</p>
+                        <p class="stat-card-value text-lg" id="top-category">-</p>
+                    </div>
+                </div>
+
+                <!-- Charts Grid -->
+                <div class="analytics-grid">
+                    <!-- Monthly Expenses Chart -->
+                    <div class="analytics-card full-width animate-fade-in-up">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Monthly Expenses</h3>
+                            <select id="year-select" class="filter-select" style="width: auto;">
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                            </select>
+                        </div>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="monthly-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Category Pie Chart -->
+                    <div class="analytics-card animate-fade-in-up delay-1">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Spending by Category</h3>
+                        </div>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="category-pie-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Weekly Trend -->
+                    <div class="analytics-card animate-fade-in-up delay-2">
+                        <div class="chart-header">
+                            <h3 class="chart-title">This Week's Trend</h3>
+                        </div>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="trend-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insights Section -->
+                <div class="card mt-8 animate-fade-in-up delay-3">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-lightbulb"
+                                style="color: var(--warning); margin-right: 8px;"></i>Spending Insights</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                            <div class="p-4" style="background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <h4 class="font-semibold mb-2">💡 Tip</h4>
+                                <p class="text-secondary text-sm">Track expenses daily for better accuracy. Small
+                                    purchases add up over time!</p>
+                            </div>
+                            <div class="p-4" style="background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <h4 class="font-semibold mb-2">📊 Fun Fact</h4>
+                                <p class="text-secondary text-sm">Most people spend 30-40% of their income on housing
+                                    and food combined.</p>
+                            </div>
+                            <div class="p-4" style="background: var(--bg-tertiary); border-radius: var(--radius-lg);">
+                                <h4 class="font-semibold mb-2">🎯 Goal</h4>
+                                <p class="text-secondary text-sm">Try the 50/30/20 rule: 50% needs, 30% wants, 20%
+                                    savings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/analytics.js"></script>
+</body>
+
+</html>

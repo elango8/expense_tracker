@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Settings - Customize your expense tracker">
+    <title>Settings | ExpenseTracker</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/pages.css">
+
+    <style>
+        .settings-section {
+            margin-bottom: var(--space-8);
+        }
+
+        .settings-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            border: 1px solid var(--border-light);
+        }
+
+        .settings-title {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-4);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .settings-title i {
+            color: var(--primary-500);
+        }
+
+        .settings-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-4) 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .settings-row:last-child {
+            border-bottom: none;
+        }
+
+        .settings-label {
+            font-weight: var(--font-weight-medium);
+        }
+
+        .settings-desc {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin-top: var(--space-1);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: var(--border-medium);
+            border-radius: var(--radius-full);
+            transition: var(--transition-normal);
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: var(--transition-normal);
+        }
+
+        .toggle-switch input:checked+.toggle-slider {
+            background: var(--primary-500);
+        }
+
+        .toggle-switch input:checked+.toggle-slider::before {
+            transform: translateX(24px);
+        }
+
+        .data-stat {
+            text-align: center;
+            padding: var(--space-4);
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-lg);
+        }
+
+        .data-stat-value {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
+        }
+
+        .data-stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-layout" id="settings-page">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" class="sidebar-logo">
+                    <div class="sidebar-logo-icon"><i class="fas fa-wallet"></i></div>
+                    <span class="sidebar-logo-text">Expense<span>Tracker</span></span>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Main Menu</span>
+                    <a href="dashboard.html" class="nav-item"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                    <a href="add-expense.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>Add
+                            Expense</span></a>
+                    <a href="transactions.html" class="nav-item"><i
+                            class="fas fa-exchange-alt"></i><span>Transactions</span></a>
+                    <a href="analytics.html" class="nav-item"><i class="fas fa-chart-bar"></i><span>Analytics</span></a>
+                </div>
+                <div class="nav-section">
+                    <span class="nav-section-title">Settings</span>
+                    <a href="settings.html" class="nav-item active"><i class="fas fa-cog"></i><span>Settings</span></a>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar">U</div>
+                    <div class="sidebar-user-info">
+                        <p class="sidebar-user-name">User</p>
+                        <p class="sidebar-user-role">Personal Account</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="sidebar-overlay"></div>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+                    <h1 class="page-title">Settings</h1>
+                </div>
+                <div class="header-right">
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <div class="toggle-track">
+                            <span class="toggle-icon sun-icon"><i class="fas fa-sun"></i></span>
+                            <span class="toggle-icon moon-icon"><i class="fas fa-moon"></i></span>
+                            <span class="toggle-thumb"></span>
+                        </div>
+                    </button>
+                </div>
+            </header>
+
+            <div class="page-content" style="max-width: 800px;">
+                <!-- Appearance -->
+                <div class="settings-section animate-fade-in-up">
+                    <div class="settings-card">
+                        <h3 class="settings-title"><i class="fas fa-palette"></i> Appearance</h3>
+                        <div class="settings-row">
+                            <div>
+                                <p class="settings-label">Dark Mode</p>
+                                <p class="settings-desc">Switch between light and dark theme</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="theme-switch">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preferences -->
+                <div class="settings-section animate-fade-in-up delay-1">
+                    <div class="settings-card">
+                        <h3 class="settings-title"><i class="fas fa-sliders-h"></i> Preferences</h3>
+                        <div class="settings-row">
+                            <div>
+                                <p class="settings-label">Currency</p>
+                                <p class="settings-desc">Select your preferred currency</p>
+                            </div>
+                            <select id="currency-select" class="form-select" style="width: 150px;">
+                                <option value="USD">$ USD</option>
+                                <option value="EUR">€ EUR</option>
+                                <option value="GBP">£ GBP</option>
+                                <option value="INR">₹ INR</option>
+                                <option value="JPY">¥ JPY</option>
+                                <option value="CAD">C$ CAD</option>
+                                <option value="AUD">A$ AUD</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Management -->
+                <div class="settings-section animate-fade-in-up delay-2">
+                    <div class="settings-card">
+                        <h3 class="settings-title"><i class="fas fa-database"></i> Data Management</h3>
+
+                        <!-- Data Stats -->
+                        <div class="grid mb-6" style="grid-template-columns: repeat(3, 1fr); gap: var(--space-4);">
+                            <div class="data-stat">
+                                <p class="data-stat-value" id="total-expenses-count">0</p>
+                                <p class="data-stat-label">Expenses</p>
+                            </div>
+                            <div class="data-stat">
+                                <p class="data-stat-value" id="total-income-count">0</p>
+                                <p class="data-stat-label">Income Records</p>
+                            </div>
+                            <div class="data-stat">
+                                <p class="data-stat-value" id="storage-used">0 KB</p>
+                                <p class="data-stat-label">Storage Used</p>
+                            </div>
+                        </div>
+
+                        <div class="settings-row">
+                            <div>
+                                <p class="settings-label">Export Data</p>
+                                <p class="settings-desc">Download your data as JSON file</p>
+                            </div>
+                            <button id="export-data" class="btn btn-secondary btn-sm">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+
+                        <div class="settings-row">
+                            <div>
+                                <p class="settings-label">Import Data</p>
+                                <p class="settings-desc">Restore from a backup file</p>
+                            </div>
+                            <button id="import-data" class="btn btn-secondary btn-sm">
+                                <i class="fas fa-upload"></i> Import
+                            </button>
+                            <input type="file" id="import-file" accept=".json" style="display: none;">
+                        </div>
+
+                        <div class="settings-row">
+                            <div>
+                                <p class="settings-label">Add Sample Data</p>
+                                <p class="settings-desc">Populate with demo transactions</p>
+                            </div>
+                            <button id="add-sample-data" class="btn btn-accent btn-sm">
+                                <i class="fas fa-magic"></i> Add Samples
+                            </button>
+                        </div>
+
+                        <div class="settings-row">
+                            <div>
+                                <p class="settings-label" style="color: var(--danger);">Reset All Data</p>
+                                <p class="settings-desc">Delete all expenses and start fresh</p>
+                            </div>
+                            <button id="reset-data" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About -->
+                <div class="settings-section animate-fade-in-up delay-3">
+                    <div class="settings-card">
+                        <h3 class="settings-title"><i class="fas fa-info-circle"></i> About</h3>
+                        <div class="settings-row">
+                            <div>
+                                <p class="settings-label">ExpenseTracker</p>
+                                <p class="settings-desc">Version 1.0.0 • Built with ❤️</p>
+                            </div>
+                        </div>
+                        <p class="text-secondary text-sm mt-4">
+                            A modern expense tracking application built with vanilla HTML, CSS, and JavaScript.
+                            All data is stored locally in your browser - no servers, complete privacy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Reset Confirmation Modal -->
+    <div class="modal-backdrop" id="reset-modal">
+        <div class="modal delete-modal">
+            <div class="modal-body">
+                <div class="delete-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <h3 class="modal-title mb-4">Reset All Data?</h3>
+                <p class="text-secondary mb-6">This will permanently delete all your expenses, income records, and
+                    settings. This action cannot be undone.</p>
+                <div class="flex gap-3 justify-center">
+                    <button class="btn btn-secondary" data-modal-close>Cancel</button>
+                    <button class="btn btn-danger" id="confirm-reset">Reset Everything</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/settings.js"></script>
+</body>
+
+</html>
