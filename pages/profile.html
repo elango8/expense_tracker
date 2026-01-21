@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your Profile - ExpenseTracker">
+    <title>Profile | ExpenseTracker</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+
+<body>
+    <div class="app-layout" id="profile-page">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" class="sidebar-logo">
+                    <div class="sidebar-logo-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <span class="sidebar-logo-text">Expense<span>Tracker</span></span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Main Menu</span>
+                    <a href="dashboard.html" class="nav-item">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="add-expense.html" class="nav-item">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Add Expense</span>
+                    </a>
+                    <a href="transactions.html" class="nav-item">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Transactions</span>
+                    </a>
+                    <a href="analytics.html" class="nav-item">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+                <div class="nav-section">
+                    <span class="nav-section-title">Account</span>
+                    <a href="profile.html" class="nav-item active">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                    <a href="settings.html" class="nav-item">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar" id="sidebar-avatar">U</div>
+                    <div class="sidebar-user-info">
+                        <p class="sidebar-user-name" id="sidebar-name">User</p>
+                        <p class="sidebar-user-role">Personal Account</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay (Mobile) -->
+        <div class="sidebar-overlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle" aria-label="Toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title">My Profile</h1>
+                </div>
+                <div class="header-right">
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <div class="toggle-track">
+                            <span class="toggle-icon sun-icon"><i class="fas fa-sun"></i></span>
+                            <span class="toggle-icon moon-icon"><i class="fas fa-moon"></i></span>
+                            <span class="toggle-thumb"></span>
+                        </div>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Profile Header Card -->
+                <div class="profile-header-card">
+                    <div class="profile-cover">
+                        <div class="cover-gradient"></div>
+                    </div>
+                    <div class="profile-header-content">
+                        <div class="profile-avatar-wrapper">
+                            <div class="profile-avatar" id="profile-avatar">
+                                <span id="avatar-initial">U</span>
+                            </div>
+                            <button class="avatar-edit-btn" id="avatar-edit">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <div class="profile-info">
+                            <h2 class="profile-name" id="profile-name">User</h2>
+                            <p class="profile-email" id="profile-email">user@example.com</p>
+                            <div class="profile-badges">
+                                <span class="profile-badge">
+                                    <i class="fas fa-crown"></i>
+                                    Premium
+                                </span>
+                                <span class="profile-badge secondary">
+                                    <i class="fas fa-calendar"></i>
+                                    <span id="member-since">Joined Jan 2024</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-secondary" id="edit-profile-btn">
+                                <i class="fas fa-edit"></i>
+                                Edit Profile
+                            </button>
+                            <button class="btn btn-danger" id="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Stats -->
+                <div class="profile-stats-row">
+                    <div class="profile-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="total-transactions">0</span>
+                            <span class="stat-label">Transactions</span>
+                        </div>
+                    </div>
+                    <div class="profile-stat-card">
+                        <div class="stat-icon income">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="total-income">$0</span>
+                            <span class="stat-label">Total Income</span>
+                        </div>
+                    </div>
+                    <div class="profile-stat-card">
+                        <div class="stat-icon expense">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="total-expense">$0</span>
+                            <span class="stat-label">Total Expenses</span>
+                        </div>
+                    </div>
+                    <div class="profile-stat-card">
+                        <div class="stat-icon savings">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="savings-rate">0%</span>
+                            <span class="stat-label">Savings Rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Content Grid -->
+                <div class="profile-grid">
+                    <!-- Personal Information -->
+                    <div class="card profile-card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-user-circle"></i>
+                                Personal Information
+                            </h3>
+                            <button class="btn btn-ghost btn-sm" id="edit-personal-btn">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="info-grid" id="personal-info-display">
+                                <div class="info-item">
+                                    <span class="info-label">First Name</span>
+                                    <span class="info-value" id="display-firstname">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Last Name</span>
+                                    <span class="info-value" id="display-lastname">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Email</span>
+                                    <span class="info-value" id="display-email">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Phone</span>
+                                    <span class="info-value" id="display-phone">-</span>
+                                </div>
+                            </div>
+
+                            <!-- Edit Form (Hidden by default) -->
+                            <form class="edit-form hidden" id="personal-info-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" class="form-input" id="edit-firstname" placeholder="John">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" class="form-input" id="edit-lastname" placeholder="Doe">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-input" id="edit-email"
+                                        placeholder="john@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Phone</label>
+                                    <input type="tel" class="form-input" id="edit-phone" placeholder="+1 234 567 8900">
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-secondary"
+                                        id="cancel-personal-edit">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Account Settings -->
+                    <div class="card profile-card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-shield-alt"></i>
+                                Account Settings
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="settings-list">
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-label">Password</span>
+                                        <span class="setting-value">••••••••</span>
+                                    </div>
+                                    <button class="btn btn-ghost btn-sm">Change</button>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-label">Two-Factor Auth</span>
+                                        <span class="setting-value status-off">Disabled</span>
+                                    </div>
+                                    <button class="btn btn-ghost btn-sm">Enable</button>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-label">Email Notifications</span>
+                                        <span class="setting-value status-on">Enabled</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Connected Accounts -->
+                    <div class="card profile-card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-link"></i>
+                                Connected Accounts
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="connected-list">
+                                <div class="connected-item">
+                                    <div class="connected-icon google">
+                                        <i class="fab fa-google"></i>
+                                    </div>
+                                    <div class="connected-info">
+                                        <span class="connected-name">Google</span>
+                                        <span class="connected-status">Not connected</span>
+                                    </div>
+                                    <button class="btn btn-secondary btn-sm">Connect</button>
+                                </div>
+                                <div class="connected-item">
+                                    <div class="connected-icon github">
+                                        <i class="fab fa-github"></i>
+                                    </div>
+                                    <div class="connected-info">
+                                        <span class="connected-name">GitHub</span>
+                                        <span class="connected-status">Not connected</span>
+                                    </div>
+                                    <button class="btn btn-secondary btn-sm">Connect</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Danger Zone -->
+                    <div class="card profile-card danger-zone">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Danger Zone
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="danger-item">
+                                <div class="danger-info">
+                                    <span class="danger-label">Delete Account</span>
+                                    <span class="danger-description">Permanently delete your account and all data</span>
+                                </div>
+                                <button class="btn btn-danger btn-sm" id="delete-account-btn">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+
+</html>

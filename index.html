@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,20 +21,25 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="css/auth.css">
 </head>
 
 <body class="landing-page">
     <!-- Navigation -->
     <nav class="landing-nav" id="landing-nav">
         <a href="index.html" class="landing-nav-logo">
-            <i class="fas fa-wallet"></i>
-            <span>Expense<span style="color: var(--primary-500)">Tracker</span></span>
+            <div class="logo-icon-wrapper">
+                <i class="fas fa-wallet"></i>
+            </div>
+            <span>Expense<span class="logo-accent">Tracker</span></span>
         </a>
-        <div class="landing-nav-links">
-            <a href="#features">Features</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="pages/dashboard.html">Dashboard</a>
+
+        <div class="landing-nav-links" id="nav-links">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#how-it-works" class="nav-link">How It Works</a>
+            <a href="pages/dashboard.html" class="nav-link">Dashboard</a>
         </div>
+
         <div class="landing-nav-actions">
             <button class="theme-toggle" aria-label="Toggle theme">
                 <div class="toggle-track">
@@ -43,209 +48,468 @@
                     <span class="toggle-thumb"></span>
                 </div>
             </button>
-            <a href="pages/dashboard.html" class="btn btn-primary">Get Started</a>
+            <a href="pages/dashboard.html" class="btn btn-primary btn-glow">Get Started</a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
     </nav>
 
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <div class="mobile-nav-content">
+            <a href="#features" class="mobile-nav-link">Features</a>
+            <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
+            <a href="pages/dashboard.html" class="mobile-nav-link">Dashboard</a>
+            <a href="pages/dashboard.html" class="btn btn-primary btn-lg mobile-nav-cta">Get Started Free</a>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Animated Background Elements -->
+        <div class="hero-bg-elements">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+            <div class="grid-pattern"></div>
+        </div>
+
         <div class="hero-container">
-            <div class="hero-content animate-fade-in-up">
-
-                <div class="hero-badge">
-                    <i class="fas fa-sparkles"></i>
+            <div class="hero-content">
+                <div class="hero-badge animate-pop">
+                    <span class="badge-dot"></span>
                     <span>Smart Financial Management</span>
+                    <i class="fas fa-arrow-right badge-arrow"></i>
                 </div>
-                <h1 class="hero-title">
-                    Track Your Expenses <span>Smartly</span>
-                </h1>
-                <p class="hero-description">
-                    Take control of your finances with our intuitive expense tracker.
-                    Monitor spending, analyze patterns, and achieve your financial goals effortlessly.
-                </p>
-                <div class="hero-actions">
-                    <a href="pages/dashboard.html" class="btn btn-primary btn-lg">
-                        <i class="fas fa-rocket"></i>
-                        Get Started Free
-                    </a>
-                    <a href="pages/dashboard.html" class="btn btn-secondary btn-lg">
-                        <i class="fas fa-chart-line"></i>
-                        View Dashboard
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <p class="hero-stat-value">100%</p>
-                        <p class="hero-stat-label">Free to Use</p>
-                    </div>
-                    <div class="hero-stat">
-                        <p class="hero-stat-value">Secure</p>
-                        <p class="hero-stat-label">Local Storage</p>
-                    </div>
-                    <div class="hero-stat">
-                        <p class="hero-stat-value">Real-time</p>
-                        <p class="hero-stat-label">Analytics</p>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-visual animate-fade-in delay-2">
-                <div class="hero-image-wrapper">
 
-                    <div class="hero-image">
-                        <img src="OIP-removebg-preview.png" alt="Hero Image">
+                <h1 class="hero-title">
+                    <span class="title-line">Take Control of</span>
+                    <span class="title-line gradient-text">Your Finances</span>
+                </h1>
+
+                <p class="hero-description">
+                    Experience the future of expense tracking. Monitor spending patterns,
+                    visualize your financial journey, and achieve your savings goals with
+                    our intelligent tracking system.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="pages/dashboard.html" class="btn btn-primary btn-lg btn-glow">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Today
+                    </a>
+                    <a href="#features" class="btn btn-glass btn-lg">
+                        <i class="fas fa-play-circle"></i>
+                        See How It Works
+                    </a>
+                </div>
+
+                <div class="hero-trust">
+                    <div class="trust-avatars">
+                        <div class="trust-avatar" style="--i: 0">👤</div>
+                        <div class="trust-avatar" style="--i: 1">👤</div>
+                        <div class="trust-avatar" style="--i: 2">👤</div>
+                        <div class="trust-avatar" style="--i: 3">+</div>
                     </div>
-                    <!-- Floating Cards -->
-                    <div class="hero-float-card card-1">
-                        <div class="flex items-center gap-3">
-                            <div
-                                style="width: 40px; height: 40px; background: var(--success-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--success);">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div>
-                                <p style="font-size: 12px; color: var(--text-secondary);">Income</p>
-                                <p style="font-weight: 600; color: var(--success);">+$5,230</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero-float-card card-2">
-                        <div class="flex items-center gap-3">
-                            <div
-                                style="width: 40px; height: 40px; background: var(--danger-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--danger);">
-                                <i class="fas fa-arrow-down"></i>
-                            </div>
-                            <div>
-                                <p style="font-size: 12px; color: var(--text-secondary);">Expenses</p>
-                                <p style="font-weight: 600; color: var(--danger);">-$2,150</p>
-                            </div>
-                        </div>
+                    <div class="trust-text">
+                        <p class="trust-count">10,000+</p>
+                        <p class="trust-label">Users tracking expenses</p>
                     </div>
                 </div>
             </div>
+
+            <div class="hero-visual">
+                <div class="hero-card-stack">
+                    <!-- Main Dashboard Preview Card -->
+                    <div class="preview-card main-card">
+                        <div class="preview-header">
+                            <div class="preview-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <span class="preview-title">Dashboard Overview</span>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-stat-row">
+                                <div class="preview-stat income">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <div>
+                                        <span class="stat-label">Income</span>
+                                        <span class="stat-value">$12,450</span>
+                                    </div>
+                                </div>
+                                <div class="preview-stat expense">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <div>
+                                        <span class="stat-label">Expenses</span>
+                                        <span class="stat-value">$8,230</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="preview-chart">
+                                <div class="chart-bars">
+                                    <div class="chart-bar" style="--height: 65%"></div>
+                                    <div class="chart-bar" style="--height: 45%"></div>
+                                    <div class="chart-bar" style="--height: 80%"></div>
+                                    <div class="chart-bar" style="--height: 55%"></div>
+                                    <div class="chart-bar" style="--height: 70%"></div>
+                                    <div class="chart-bar" style="--height: 40%"></div>
+                                    <div class="chart-bar active" style="--height: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Stat Card 1 -->
+                    <div class="floating-card card-income">
+                        <div class="floating-card-icon income">
+                            <i class="fas fa-arrow-trend-up"></i>
+                        </div>
+                        <div class="floating-card-content">
+                            <span class="floating-label">This Month</span>
+                            <span class="floating-value success">+$4,220</span>
+                        </div>
+                        <div class="card-shine"></div>
+                    </div>
+
+                    <!-- Floating Stat Card 2 -->
+                    <div class="floating-card card-savings">
+                        <div class="floating-card-icon savings">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <div class="floating-card-content">
+                            <span class="floating-label">Saved</span>
+                            <span class="floating-value primary">34%</span>
+                        </div>
+                        <div class="card-shine"></div>
+                    </div>
+
+                    <!-- Floating Notification Card -->
+                    <div class="floating-card card-notification">
+                        <div class="notification-dot"></div>
+                        <i class="fas fa-bell"></i>
+                        <span>Budget goal achieved! 🎉</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="features" id="features">
-        <div class="section-header animate-fade-in-up">
-            <span class="section-label">Features</span>
-            <h2 class="section-title">Everything You Need to Manage Finances</h2>
+        <div class="section-header">
+            <span class="section-label">
+                <i class="fas fa-sparkles"></i>
+                Features
+            </span>
+            <h2 class="section-title">Everything You Need to<br><span class="gradient-text">Master Your Money</span>
+            </h2>
             <p class="section-description">
                 Powerful tools designed to help you track, analyze, and optimize your spending habits.
             </p>
         </div>
+
         <div class="features-grid">
-            <div class="feature-card animate-fade-in-up delay-1">
-                <div class="feature-icon">
-                    <i class="fas fa-chart-pie"></i>
+            <div class="feature-card" data-tilt>
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="feature-icon-bg"></div>
                 </div>
                 <h3 class="feature-title">Visual Analytics</h3>
                 <p class="feature-description">
                     Beautiful charts and graphs to visualize your spending patterns and identify trends.
                 </p>
+                <a href="pages/analytics.html" class="feature-link">
+                    Learn more <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="feature-card animate-fade-in-up delay-2">
-                <div class="feature-icon">
-                    <i class="fas fa-tags"></i>
+
+            <div class="feature-card" data-tilt>
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="feature-icon-bg"></div>
                 </div>
                 <h3 class="feature-title">Smart Categories</h3>
                 <p class="feature-description">
                     Organize expenses by category to understand where your money goes each month.
                 </p>
+                <a href="pages/add-expense.html" class="feature-link">
+                    Learn more <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="feature-card animate-fade-in-up delay-3">
-                <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
+
+            <div class="feature-card" data-tilt>
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div class="feature-icon-bg"></div>
                 </div>
                 <h3 class="feature-title">100% Private</h3>
                 <p class="feature-description">
                     Your data stays on your device. No servers, no tracking, complete privacy.
                 </p>
+                <a href="pages/settings.html" class="feature-link">
+                    Learn more <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="feature-card animate-fade-in-up delay-4">
-                <div class="feature-icon">
-                    <i class="fas fa-mobile-alt"></i>
+
+            <div class="feature-card" data-tilt>
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-screen"></i>
+                    </div>
+                    <div class="feature-icon-bg"></div>
                 </div>
                 <h3 class="feature-title">Responsive Design</h3>
                 <p class="feature-description">
                     Access your expense tracker from any device - desktop, tablet, or mobile.
                 </p>
+                <a href="pages/dashboard.html" class="feature-link">
+                    Learn more <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="feature-card animate-fade-in-up delay-5">
-                <div class="feature-icon">
-                    <i class="fas fa-moon"></i>
+
+            <div class="feature-card" data-tilt>
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="feature-icon-bg"></div>
                 </div>
                 <h3 class="feature-title">Dark Mode</h3>
                 <p class="feature-description">
                     Easy on the eyes with a beautiful dark theme option for night use.
                 </p>
+                <a href="#" class="feature-link"
+                    onclick="document.querySelector('.theme-toggle').click(); return false;">
+                    Try it now <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="feature-card animate-fade-in-up">
-                <div class="feature-icon">
-                    <i class="fas fa-download"></i>
+
+            <div class="feature-card" data-tilt>
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <div class="feature-icon-bg"></div>
                 </div>
                 <h3 class="feature-title">Export Data</h3>
                 <p class="feature-description">
                     Export your financial data anytime for backup or analysis in other tools.
                 </p>
+                <a href="pages/settings.html" class="feature-link">
+                    Learn more <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- How It Works Section -->
-    <section class="features" id="how-it-works" style="background: var(--bg-primary);">
+    <section class="how-it-works" id="how-it-works">
         <div class="section-header">
-            <span class="section-label">How It Works</span>
-            <h2 class="section-title">Start Tracking in 3 Simple Steps</h2>
+            <span class="section-label">
+                <i class="fas fa-route"></i>
+                How It Works
+            </span>
+            <h2 class="section-title">Start Tracking in<br><span class="gradient-text">3 Simple Steps</span></h2>
         </div>
-        <div class="features-grid" style="max-width: 900px;">
-            <div class="feature-card" style="text-align: left;">
-                <div style="font-size: 48px; font-weight: 700; color: var(--primary-200); margin-bottom: 16px;">01</div>
-                <h3 class="feature-title">Add Expenses</h3>
-                <p class="feature-description">
-                    Quickly log your expenses with category, amount, and payment method.
-                </p>
+
+        <div class="steps-container">
+            <div class="steps-line"></div>
+
+            <div class="step-card">
+                <div class="step-number">
+                    <span>01</span>
+                    <div class="step-pulse"></div>
+                </div>
+                <div class="step-content">
+                    <div class="step-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <h3 class="step-title">Add Expenses</h3>
+                    <p class="step-description">
+                        Quickly log your expenses with category, amount, and payment method in seconds.
+                    </p>
+                </div>
             </div>
-            <div class="feature-card" style="text-align: left;">
-                <div style="font-size: 48px; font-weight: 700; color: var(--primary-200); margin-bottom: 16px;">02</div>
-                <h3 class="feature-title">View Dashboard</h3>
-                <p class="feature-description">
-                    Get an overview of your finances with interactive charts and summaries.
-                </p>
+
+            <div class="step-card">
+                <div class="step-number">
+                    <span>02</span>
+                    <div class="step-pulse"></div>
+                </div>
+                <div class="step-content">
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="step-title">View Dashboard</h3>
+                    <p class="step-description">
+                        Get an overview of your finances with interactive charts and summaries.
+                    </p>
+                </div>
             </div>
-            <div class="feature-card" style="text-align: left;">
-                <div style="font-size: 48px; font-weight: 700; color: var(--primary-200); margin-bottom: 16px;">03</div>
-                <h3 class="feature-title">Analyze & Save</h3>
-                <p class="feature-description">
-                    Understand your spending patterns and make smarter financial decisions.
-                </p>
+
+            <div class="step-card">
+                <div class="step-number">
+                    <span>03</span>
+                    <div class="step-pulse"></div>
+                </div>
+                <div class="step-content">
+                    <div class="step-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="step-title">Achieve Goals</h3>
+                    <p class="step-description">
+                        Understand your spending patterns and make smarter financial decisions.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta">
-        <div class="cta-content animate-fade-in-up">
-            <h2 class="cta-title">Ready to Take Control of Your Finances?</h2>
+        <div class="cta-bg-elements">
+            <div class="cta-orb orb-1"></div>
+            <div class="cta-orb orb-2"></div>
+        </div>
+
+        <div class="cta-content">
+            <div class="cta-badge">
+                <i class="fas fa-gift"></i>
+                <span>100% Free Forever</span>
+            </div>
+            <h2 class="cta-title">Ready to Take Control<br>of Your Finances?</h2>
             <p class="cta-description">
                 Start tracking your expenses today. It's free, private, and takes just seconds to begin.
             </p>
-            <a href="pages/dashboard.html" class="btn btn-primary btn-lg">
-                <i class="fas fa-rocket"></i>
-                Get Started Now
-            </a>
+            <div class="cta-actions">
+                <a href="pages/dashboard.html" class="btn btn-white btn-lg btn-glow">
+                    <i class="fas fa-rocket"></i>
+                    Get Started Now
+                </a>
+            </div>
+            <div class="cta-features">
+                <div class="cta-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>No credit card required</span>
+                </div>
+                <div class="cta-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Data stored locally</span>
+                </div>
+                <div class="cta-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Works offline</span>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Signup Modal -->
+    <div class="signup-modal-backdrop" id="signup-modal">
+        <div class="signup-modal">
+            <div class="signup-modal-header">
+                <h3>Create Your Account</h3>
+                <button class="signup-modal-close" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="signup-modal-body">
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-5);">
+                    Sign up to start tracking your expenses
+                </p>
+
+                <div class="social-login">
+                    <button type="button" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        <span>Google</span>
+                    </button>
+                    <button type="button" class="social-btn github">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </button>
+                </div>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <form id="modal-signup-form">
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" class="form-input" placeholder="john@example.com" id="modal-email"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" class="form-input" placeholder="Create a password"
+                                id="modal-password" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                        <i class="fas fa-rocket"></i>
+                        Get Started Free
+                    </button>
+                </form>
+            </div>
+            <div class="signup-modal-footer">
+                <p>Already have an account? <a href="pages/signup.html">Log in</a></p>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="landing-footer">
-        <p>© 2024 ExpenseTracker. Built with <i class="fas fa-heart" style="color: var(--danger);"></i> for better
-            financial management.</p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">
+                    <i class="fas fa-wallet"></i>
+                    <span>Expense<span class="logo-accent">Tracker</span></span>
+                </a>
+                <p class="footer-tagline">Smart expense tracking for everyone.</p>
+            </div>
+            <div class="footer-links">
+                <a href="pages/dashboard.html">Dashboard</a>
+                <a href="pages/analytics.html">Analytics</a>
+                <a href="pages/settings.html">Settings</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 ExpenseTracker. Built with <i class="fas fa-heart"></i> for better financial management.</p>
+        </div>
     </footer>
 
     <!-- Scripts -->
     <script src="js/storage.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
     <script>
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
@@ -264,9 +528,133 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-nav-overlay').classList.remove('active');
+                    document.body.classList.remove('menu-open');
                 }
             });
         });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileNavOverlay.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+            mobileMenuToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking overlay
+        mobileNavOverlay.addEventListener('click', (e) => {
+            if (e.target === mobileNavOverlay) {
+                mobileNavOverlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                mobileMenuToggle.classList.remove('active');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .step-card, .section-header').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 3D Tilt effect for feature cards
+        document.querySelectorAll('[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+        // Protected action handling - show signup modal for dashboard links if not logged in
+        document.querySelectorAll('a[href*="dashboard"], a[href*="add-expense"], a[href*="transactions"], a[href*="analytics"], a[href*="settings"], .btn-primary[href*="pages/"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Check if user is logged in
+                const isLoggedIn = localStorage.getItem('user') !== null;
+
+                if (!isLoggedIn) {
+                    e.preventDefault();
+                    // Show signup modal
+                    if (typeof Auth !== 'undefined' && Auth.showSignupModal) {
+                        Auth.showSignupModal();
+                    } else {
+                        // Fallback
+                        const modal = document.getElementById('signup-modal');
+                        if (modal) {
+                            modal.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    }
+                }
+            });
+        });
+
+        // Modal form handling
+        const modalForm = document.getElementById('modal-signup-form');
+        if (modalForm) {
+            modalForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('modal-email')?.value;
+
+                // Create user and redirect
+                const user = {
+                    id: Date.now().toString(),
+                    firstName: 'User',
+                    lastName: '',
+                    email: email,
+                    createdAt: new Date().toISOString()
+                };
+
+                localStorage.setItem('user', JSON.stringify(user));
+                window.location.href = 'pages/dashboard.html';
+            });
+        }
+
+        // Modal close handling
+        const modalClose = document.querySelector('.signup-modal-close');
+        const signupModal = document.getElementById('signup-modal');
+
+        if (modalClose) {
+            modalClose.addEventListener('click', () => {
+                signupModal?.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+
+        if (signupModal) {
+            signupModal.addEventListener('click', (e) => {
+                if (e.target === signupModal) {
+                    signupModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
     </script>
 </body>
 
