@@ -76,6 +76,12 @@
     overflow: hidden;
 }
 
+.hero-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
 .hero::before {
     content: '';
     position: absolute;
