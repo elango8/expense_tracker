@@ -265,21 +265,32 @@ const Storage = {
     },
 
     /**
-     * Get total expenses amount
+     * Get total expenses amount (only type='expense' or no type)
      * @param {Array} expenses - Optional expense array
      * @returns {number} Total amount
      */
     getTotalExpenses(expenses = null) {
         const data = expenses || this.getExpenses();
-        return data.reduce((sum, e) => sum + (parseFloat(e.amount) || 0), 0);
+        // Filter to only include expenses (not income)
+        return data
+            .filter(e => !e.type || e.type === 'expense')
+            .reduce((sum, e) => sum + (parseFloat(e.amount) || 0), 0);
     },
 
     /**
-     * Get total income amount
+     * Get total income amount (type='income' from expenses array)
      * @returns {number} Total income
      */
     getTotalIncome() {
-        return this.getIncome().reduce((sum, i) => sum + (parseFloat(i.amount) || 0), 0);
+        // First check old income array for backwards compatibility
+        const legacyIncome = this.getIncome().reduce((sum, i) => sum + (parseFloat(i.amount) || 0), 0);
+
+        // Also sum income from expenses array (type='income')
+        const newIncome = this.getExpenses()
+            .filter(e => e.type === 'income')
+            .reduce((sum, e) => sum + (parseFloat(e.amount) || 0), 0);
+
+        return legacyIncome + newIncome;
     },
 
     /**

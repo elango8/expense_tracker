@@ -222,6 +222,57 @@
     color: var(--text-primary);
 }
 
+/* Header Profile Button */
+.header-profile-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3) var(--space-1) var(--space-1);
+    background: var(--bg-hover);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: 1px solid var(--border-light);
+}
+
+.header-profile-btn:hover {
+    background: var(--bg-active);
+    border-color: var(--primary-500);
+}
+
+.header-profile-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-semibold);
+    color: white;
+    font-size: var(--font-size-sm);
+}
+
+.header-profile-name {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-primary);
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    .header-profile-name {
+        display: none;
+    }
+
+    .header-profile-btn {
+        padding: var(--space-1);
+    }
+}
+
 /* ===== Premium Theme Toggle ===== */
 .theme-toggle {
     background: transparent;

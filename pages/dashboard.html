@@ -47,8 +47,12 @@
                         <span>Dashboard</span>
                     </a>
                     <a href="add-expense.html" class="nav-item">
-                        <i class="fas fa-plus-circle"></i>
+                        <i class="fas fa-minus-circle"></i>
                         <span>Add Expense</span>
+                    </a>
+                    <a href="add-income.html" class="nav-item">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Add Income</span>
                     </a>
                     <a href="transactions.html" class="nav-item">
                         <i class="fas fa-exchange-alt"></i>
@@ -67,16 +71,6 @@
                     </a>
                 </div>
             </nav>
-
-            <div class="sidebar-footer">
-                <div class="sidebar-user">
-                    <div class="sidebar-user-avatar">U</div>
-                    <div class="sidebar-user-info">
-                        <p class="sidebar-user-name">User</p>
-                        <p class="sidebar-user-role">Personal Account</p>
-                    </div>
-                </div>
-            </div>
         </aside>
 
         <!-- Sidebar Overlay (Mobile) -->
@@ -100,6 +94,10 @@
                             <span class="toggle-thumb"></span>
                         </div>
                     </button>
+                    <a href="profile.html" class="header-profile-btn" id="header-profile">
+                        <div class="header-profile-avatar" id="header-avatar">U</div>
+                        <span class="header-profile-name" id="header-name">Profile</span>
+                    </a>
                 </div>
             </header>
 
@@ -109,9 +107,15 @@
                 <div class="quick-actions">
                     <a href="add-expense.html" class="quick-action-btn">
                         <div class="quick-action-icon">
-                            <i class="fas fa-plus"></i>
+                            <i class="fas fa-minus"></i>
                         </div>
                         <span class="quick-action-text">Add New Expense</span>
+                    </a>
+                    <a href="add-income.html" class="quick-action-btn income-action">
+                        <div class="quick-action-icon" style="background: var(--success-light); color: var(--success);">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <span class="quick-action-text">Add New Income</span>
                     </a>
                     <a href="transactions.html" class="quick-action-btn">
                         <div class="quick-action-icon">

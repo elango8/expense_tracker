@@ -85,6 +85,18 @@
     box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
 }
 
+.btn-success {
+    background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
 .btn-ghost {
     background: transparent;
     color: var(--text-primary);

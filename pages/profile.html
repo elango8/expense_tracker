@@ -44,8 +44,12 @@
                         <span>Dashboard</span>
                     </a>
                     <a href="add-expense.html" class="nav-item">
-                        <i class="fas fa-plus-circle"></i>
+                        <i class="fas fa-minus-circle"></i>
                         <span>Add Expense</span>
+                    </a>
+                    <a href="add-income.html" class="nav-item">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Add Income</span>
                     </a>
                     <a href="transactions.html" class="nav-item">
                         <i class="fas fa-exchange-alt"></i>
@@ -68,16 +72,6 @@
                     </a>
                 </div>
             </nav>
-
-            <div class="sidebar-footer">
-                <div class="sidebar-user">
-                    <div class="sidebar-user-avatar" id="sidebar-avatar">U</div>
-                    <div class="sidebar-user-info">
-                        <p class="sidebar-user-name" id="sidebar-name">User</p>
-                        <p class="sidebar-user-role">Personal Account</p>
-                    </div>
-                </div>
-            </div>
         </aside>
 
         <!-- Sidebar Overlay (Mobile) -->
@@ -101,88 +95,150 @@
                             <span class="toggle-thumb"></span>
                         </div>
                     </button>
+                    <a href="profile.html" class="header-profile-btn active" id="header-profile">
+                        <div class="header-profile-avatar" id="header-avatar">U</div>
+                        <span class="header-profile-name" id="header-name">Profile</span>
+                    </a>
                 </div>
             </header>
 
             <!-- Page Content -->
             <div class="page-content">
-                <!-- Profile Header Card -->
-                <div class="profile-header-card">
-                    <div class="profile-cover">
-                        <div class="cover-gradient"></div>
+                <!-- Profile Header Card - Premium Design -->
+                <div class="profile-hero">
+                    <!-- Animated Background -->
+                    <div class="profile-hero-bg">
+                        <div class="profile-gradient-orb orb-1"></div>
+                        <div class="profile-gradient-orb orb-2"></div>
+                        <div class="profile-pattern"></div>
                     </div>
-                    <div class="profile-header-content">
-                        <div class="profile-avatar-wrapper">
-                            <div class="profile-avatar" id="profile-avatar">
-                                <span id="avatar-initial">U</span>
+
+                    <!-- Profile Content -->
+                    <div class="profile-hero-content">
+                        <!-- Left: Avatar & Info -->
+                        <div class="profile-hero-main">
+                            <div class="profile-avatar-container">
+                                <div class="profile-avatar-ring">
+                                    <div class="profile-avatar" id="profile-avatar">
+                                        <span id="avatar-initial">U</span>
+                                    </div>
+                                </div>
+                                <button class="profile-avatar-edit" id="avatar-edit">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                                <div class="profile-status-dot"></div>
                             </div>
-                            <button class="avatar-edit-btn" id="avatar-edit">
-                                <i class="fas fa-camera"></i>
-                            </button>
-                        </div>
-                        <div class="profile-info">
-                            <h2 class="profile-name" id="profile-name">User</h2>
-                            <p class="profile-email" id="profile-email">user@example.com</p>
-                            <div class="profile-badges">
-                                <span class="profile-badge">
-                                    <i class="fas fa-crown"></i>
-                                    Premium
-                                </span>
-                                <span class="profile-badge secondary">
-                                    <i class="fas fa-calendar"></i>
-                                    <span id="member-since">Joined Jan 2024</span>
-                                </span>
+
+                            <div class="profile-details">
+                                <div class="profile-name-row">
+                                    <h2 class="profile-name" id="profile-name">User</h2>
+                                    <span class="profile-verified">
+                                        <i class="fas fa-check-circle"></i>
+                                    </span>
+                                </div>
+                                <p class="profile-email" id="profile-email">user@example.com</p>
+                                <div class="profile-meta">
+                                    <span class="profile-meta-item">
+                                        <i class="fas fa-crown"></i>
+                                        Premium Member
+                                    </span>
+                                    <span class="profile-meta-divider">•</span>
+                                    <span class="profile-meta-item">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span id="member-since">Joined Jan 2024</span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                        <div class="profile-actions">
-                            <button class="btn btn-secondary" id="edit-profile-btn">
-                                <i class="fas fa-edit"></i>
-                                Edit Profile
+
+                        <!-- Right: Actions -->
+                        <div class="profile-hero-actions">
+                            <button class="profile-action-btn edit" id="edit-profile-btn">
+                                <i class="fas fa-pen"></i>
+                                <span>Edit Profile</span>
                             </button>
-                            <button class="btn btn-danger" id="logout-btn">
+                            <button class="profile-action-btn logout" id="logout-btn">
                                 <i class="fas fa-sign-out-alt"></i>
-                                Logout
+                                <span>Logout</span>
                             </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats Bar -->
+                    <div class="profile-quick-stats">
+                        <div class="quick-stat">
+                            <span class="quick-stat-value" id="quick-transactions">0</span>
+                            <span class="quick-stat-label">Transactions</span>
+                        </div>
+                        <div class="quick-stat-divider"></div>
+                        <div class="quick-stat">
+                            <span class="quick-stat-value income" id="quick-income">$0</span>
+                            <span class="quick-stat-label">Income</span>
+                        </div>
+                        <div class="quick-stat-divider"></div>
+                        <div class="quick-stat">
+                            <span class="quick-stat-value expense" id="quick-expense">$0</span>
+                            <span class="quick-stat-label">Expenses</span>
+                        </div>
+                        <div class="quick-stat-divider"></div>
+                        <div class="quick-stat">
+                            <span class="quick-stat-value savings" id="quick-savings">0%</span>
+                            <span class="quick-stat-label">Savings</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Profile Stats -->
-                <div class="profile-stats-row">
-                    <div class="profile-stat-card">
-                        <div class="stat-icon">
+                <!-- Profile Stats Cards - Horizontal Layout -->
+                <div class="profile-stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-icon">
                             <i class="fas fa-receipt"></i>
                         </div>
-                        <div class="stat-info">
-                            <span class="stat-value" id="total-transactions">0</span>
-                            <span class="stat-label">Transactions</span>
+                        <div class="stat-card-content">
+                            <span class="stat-card-value" id="total-transactions">0</span>
+                            <span class="stat-card-label">Total Transactions</span>
+                        </div>
+                        <div class="stat-card-trend neutral">
+                            <i class="fas fa-minus"></i>
                         </div>
                     </div>
-                    <div class="profile-stat-card">
-                        <div class="stat-icon income">
+
+                    <div class="stat-card">
+                        <div class="stat-card-icon income">
+                            <i class="fas fa-arrow-trend-up"></i>
+                        </div>
+                        <div class="stat-card-content">
+                            <span class="stat-card-value" id="total-income">$0</span>
+                            <span class="stat-card-label">Total Income</span>
+                        </div>
+                        <div class="stat-card-trend up">
                             <i class="fas fa-arrow-up"></i>
                         </div>
-                        <div class="stat-info">
-                            <span class="stat-value" id="total-income">$0</span>
-                            <span class="stat-label">Total Income</span>
-                        </div>
                     </div>
-                    <div class="profile-stat-card">
-                        <div class="stat-icon expense">
+
+                    <div class="stat-card">
+                        <div class="stat-card-icon expense">
+                            <i class="fas fa-arrow-trend-down"></i>
+                        </div>
+                        <div class="stat-card-content">
+                            <span class="stat-card-value" id="total-expense">$0</span>
+                            <span class="stat-card-label">Total Expenses</span>
+                        </div>
+                        <div class="stat-card-trend down">
                             <i class="fas fa-arrow-down"></i>
                         </div>
-                        <div class="stat-info">
-                            <span class="stat-value" id="total-expense">$0</span>
-                            <span class="stat-label">Total Expenses</span>
-                        </div>
                     </div>
-                    <div class="profile-stat-card">
-                        <div class="stat-icon savings">
+
+                    <div class="stat-card">
+                        <div class="stat-card-icon savings">
                             <i class="fas fa-piggy-bank"></i>
                         </div>
-                        <div class="stat-info">
-                            <span class="stat-value" id="savings-rate">0%</span>
-                            <span class="stat-label">Savings Rate</span>
+                        <div class="stat-card-content">
+                            <span class="stat-card-value" id="savings-rate">0%</span>
+                            <span class="stat-card-label">Savings Rate</span>
+                        </div>
+                        <div class="stat-card-trend up">
+                            <i class="fas fa-chart-line"></i>
                         </div>
                     </div>
                 </div>

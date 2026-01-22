@@ -1,11 +1,10 @@
 /**
- * Expense Tracker - Expense/Income Form Module
+ * Expense Tracker - Income Form Module
  */
 
-const ExpenseForm = {
+const IncomeForm = {
     selectedCategory: null,
-    selectedPayment: 'cash',
-    transactionType: 'expense', // 'expense' or 'income'
+    selectedPayment: 'bank',
 
     init() {
         this.bindEvents();
@@ -13,16 +12,6 @@ const ExpenseForm = {
     },
 
     bindEvents() {
-        // Transaction type toggle
-        document.querySelectorAll('.type-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
-                e.currentTarget.classList.add('active');
-                this.transactionType = e.currentTarget.dataset.type;
-                this.updateFormForType();
-            });
-        });
-
         // Category selection
         document.querySelectorAll('.category-option').forEach(option => {
             option.addEventListener('click', (e) => {
@@ -43,7 +32,7 @@ const ExpenseForm = {
         });
 
         // Form submission
-        const form = document.getElementById('expense-form');
+        const form = document.getElementById('income-form');
         if (form) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
@@ -70,21 +59,6 @@ const ExpenseForm = {
         }
     },
 
-    updateFormForType() {
-        const formTitle = document.getElementById('form-title');
-        const formSubtitle = document.getElementById('form-subtitle');
-
-        if (this.transactionType === 'income') {
-            formTitle?.classList.add('income-mode');
-            if (formTitle) formTitle.textContent = 'New Income';
-            if (formSubtitle) formSubtitle.textContent = 'Fill in the details below to add income';
-        } else {
-            formTitle?.classList.remove('income-mode');
-            if (formTitle) formTitle.textContent = 'New Expense';
-            if (formSubtitle) formSubtitle.textContent = 'Fill in the details below to add a new expense';
-        }
-    },
-
     setDefaultDate() {
         const dateInput = document.getElementById('date');
         if (dateInput) {
@@ -101,9 +75,9 @@ const ExpenseForm = {
             return;
         }
 
-        // Save expense/income with type
-        const transaction = Storage.addExpense({
-            type: this.transactionType,
+        // Save income using Storage.addExpense with type 'income'
+        const income = Storage.addExpense({
+            type: 'income',
             amount: parseFloat(formData.amount),
             category: this.selectedCategory,
             paymentMethod: this.selectedPayment,
@@ -141,7 +115,7 @@ const ExpenseForm = {
         }
 
         if (!this.selectedCategory) {
-            errors.category = 'Please select a category';
+            errors.category = 'Please select an income source';
         }
 
         if (!data.date) {
@@ -198,10 +172,7 @@ const ExpenseForm = {
     showSuccess() {
         const overlay = document.getElementById('success-overlay');
         if (overlay) overlay.classList.add('active');
-        const message = this.transactionType === 'income'
-            ? 'Income added successfully!'
-            : 'Expense added successfully!';
-        Utils.showToast(message, 'success');
+        Utils.showToast('Income added successfully!', 'success');
     },
 
     hideSuccess() {
@@ -210,31 +181,25 @@ const ExpenseForm = {
     },
 
     resetForm() {
-        const form = document.getElementById('expense-form');
+        const form = document.getElementById('income-form');
         if (form) form.reset();
 
         this.selectedCategory = null;
-        this.selectedPayment = 'cash';
-        this.transactionType = 'expense';
+        this.selectedPayment = 'bank';
 
         document.querySelectorAll('.category-option').forEach(o => o.classList.remove('selected'));
         document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
-        document.querySelector('.payment-option[data-method="cash"]')?.classList.add('selected');
+        document.querySelector('.payment-option[data-method="bank"]')?.classList.add('selected');
         document.querySelectorAll('.form-error').forEach(el => el.remove());
         document.querySelectorAll('.form-input.error').forEach(el => el.classList.remove('error'));
-
-        // Reset type toggle
-        document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
-        document.querySelector('.type-btn.expense')?.classList.add('active');
-        this.updateFormForType();
 
         this.setDefaultDate();
     }
 };
 
-// Initialize if on add expense page
+// Initialize if on add income page
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('expense-form')) {
-        ExpenseForm.init();
+    if (document.getElementById('income-form')) {
+        IncomeForm.init();
     }
 });

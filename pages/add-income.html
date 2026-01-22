@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Add a new expense - Track your spending">
-    <title>Add Expense | ExpenseTracker</title>
+    <meta name="description" content="Add a new income - Track your earnings">
+    <title>Add Income | ExpenseTracker</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,9 +33,9 @@
                 <div class="nav-section">
                     <span class="nav-section-title">Main Menu</span>
                     <a href="dashboard.html" class="nav-item"><i class="fas fa-home"></i><span>Dashboard</span></a>
-                    <a href="add-expense.html" class="nav-item active"><i class="fas fa-minus-circle"></i><span>Add
+                    <a href="add-expense.html" class="nav-item"><i class="fas fa-minus-circle"></i><span>Add
                             Expense</span></a>
-                    <a href="add-income.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>Add
+                    <a href="add-income.html" class="nav-item active"><i class="fas fa-plus-circle"></i><span>Add
                             Income</span></a>
                     <a href="transactions.html" class="nav-item"><i
                             class="fas fa-exchange-alt"></i><span>Transactions</span></a>
@@ -54,7 +54,7 @@
             <header class="header">
                 <div class="header-left">
                     <button class="menu-toggle"><i class="fas fa-bars"></i></button>
-                    <h1 class="page-title">Add Expense</h1>
+                    <h1 class="page-title">Add Income</h1>
                 </div>
                 <div class="header-right">
                     <button class="theme-toggle" aria-label="Toggle theme">
@@ -75,12 +75,11 @@
                 <div class="form-page">
                     <div class="form-card animate-fade-in-up">
                         <div class="form-header">
-                            <h2 class="form-title" id="form-title">New Expense</h2>
-                            <p class="form-subtitle" id="form-subtitle">Fill in the details below to add a new expense
-                            </p>
+                            <h2 class="form-title income-mode">New Income</h2>
+                            <p class="form-subtitle">Fill in the details below to add your income</p>
                         </div>
 
-                        <form id="expense-form">
+                        <form id="income-form">
                             <!-- Amount -->
                             <div class="form-group">
                                 <label class="form-label" for="amount">Amount *</label>
@@ -91,49 +90,49 @@
                                 </div>
                             </div>
 
-                            <!-- Category -->
+                            <!-- Income Source Category -->
                             <div class="form-group">
-                                <label class="form-label">Category *</label>
+                                <label class="form-label">Income Source *</label>
                                 <div class="category-grid">
-                                    <div class="category-option" data-category="food">
-                                        <span class="category-option-icon" style="color: var(--cat-food);"><i
-                                                class="fas fa-utensils"></i></span>
-                                        <span class="category-option-label">Food</span>
+                                    <div class="category-option income-category" data-category="salary">
+                                        <span class="category-option-icon" style="color: #10b981;"><i
+                                                class="fas fa-briefcase"></i></span>
+                                        <span class="category-option-label">Salary</span>
                                     </div>
-                                    <div class="category-option" data-category="travel">
-                                        <span class="category-option-icon" style="color: var(--cat-travel);"><i
-                                                class="fas fa-plane"></i></span>
-                                        <span class="category-option-label">Travel</span>
+                                    <div class="category-option income-category" data-category="freelance">
+                                        <span class="category-option-icon" style="color: #6366f1;"><i
+                                                class="fas fa-laptop"></i></span>
+                                        <span class="category-option-label">Freelance</span>
                                     </div>
-                                    <div class="category-option" data-category="bills">
-                                        <span class="category-option-icon" style="color: var(--cat-bills);"><i
-                                                class="fas fa-file-invoice"></i></span>
-                                        <span class="category-option-label">Bills</span>
+                                    <div class="category-option income-category" data-category="business">
+                                        <span class="category-option-icon" style="color: #f59e0b;"><i
+                                                class="fas fa-store"></i></span>
+                                        <span class="category-option-label">Business</span>
                                     </div>
-                                    <div class="category-option" data-category="shopping">
-                                        <span class="category-option-icon" style="color: var(--cat-shopping);"><i
-                                                class="fas fa-shopping-bag"></i></span>
-                                        <span class="category-option-label">Shopping</span>
+                                    <div class="category-option income-category" data-category="investment">
+                                        <span class="category-option-icon" style="color: #8b5cf6;"><i
+                                                class="fas fa-chart-line"></i></span>
+                                        <span class="category-option-label">Investment</span>
                                     </div>
-                                    <div class="category-option" data-category="entertainment">
-                                        <span class="category-option-icon" style="color: var(--cat-entertainment);"><i
-                                                class="fas fa-film"></i></span>
-                                        <span class="category-option-label">Entertainment</span>
+                                    <div class="category-option income-category" data-category="rental">
+                                        <span class="category-option-icon" style="color: #ec4899;"><i
+                                                class="fas fa-home"></i></span>
+                                        <span class="category-option-label">Rental</span>
                                     </div>
-                                    <div class="category-option" data-category="health">
-                                        <span class="category-option-icon" style="color: var(--cat-health);"><i
-                                                class="fas fa-heartbeat"></i></span>
-                                        <span class="category-option-label">Health</span>
+                                    <div class="category-option income-category" data-category="gift">
+                                        <span class="category-option-icon" style="color: #14b8a6;"><i
+                                                class="fas fa-gift"></i></span>
+                                        <span class="category-option-label">Gift</span>
                                     </div>
-                                    <div class="category-option" data-category="education">
-                                        <span class="category-option-icon" style="color: #b8860b;"><i
-                                                class="fas fa-graduation-cap"></i></span>
-                                        <span class="category-option-label">Education</span>
+                                    <div class="category-option income-category" data-category="refund">
+                                        <span class="category-option-icon" style="color: #f97316;"><i
+                                                class="fas fa-undo"></i></span>
+                                        <span class="category-option-label">Refund</span>
                                     </div>
-                                    <div class="category-option" data-category="others">
-                                        <span class="category-option-icon" style="color: var(--cat-others);"><i
+                                    <div class="category-option income-category" data-category="other">
+                                        <span class="category-option-icon" style="color: #64748b;"><i
                                                 class="fas fa-ellipsis-h"></i></span>
-                                        <span class="category-option-label">Others</span>
+                                        <span class="category-option-label">Other</span>
                                     </div>
                                 </div>
                             </div>
@@ -145,23 +144,23 @@
                                     <input type="date" id="date" class="form-input">
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Payment Method</label>
+                                    <label class="form-label">Received Via</label>
                                     <div class="payment-methods">
-                                        <div class="payment-option selected" data-method="cash">
+                                        <div class="payment-option selected" data-method="bank">
+                                            <i class="fas fa-university"></i>
+                                            <span>Bank</span>
+                                        </div>
+                                        <div class="payment-option" data-method="cash">
                                             <i class="fas fa-money-bill-wave"></i>
                                             <span>Cash</span>
-                                        </div>
-                                        <div class="payment-option" data-method="card">
-                                            <i class="fas fa-credit-card"></i>
-                                            <span>Card</span>
                                         </div>
                                         <div class="payment-option" data-method="upi">
                                             <i class="fas fa-mobile-alt"></i>
                                             <span>UPI</span>
                                         </div>
-                                        <div class="payment-option" data-method="bank">
-                                            <i class="fas fa-university"></i>
-                                            <span>Bank</span>
+                                        <div class="payment-option" data-method="cheque">
+                                            <i class="fas fa-money-check"></i>
+                                            <span>Cheque</span>
                                         </div>
                                     </div>
                                 </div>
@@ -171,7 +170,7 @@
                             <div class="form-group">
                                 <label class="form-label" for="description">Description</label>
                                 <input type="text" id="description" class="form-input"
-                                    placeholder="What was this expense for?">
+                                    placeholder="What is this income from?">
                             </div>
 
                             <!-- Notes -->
@@ -186,8 +185,8 @@
                                 <button type="button" id="reset-form" class="btn btn-secondary">
                                     <i class="fas fa-redo"></i> Reset
                                 </button>
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-plus"></i> Add Expense
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-plus"></i> Add Income
                                 </button>
                             </div>
                         </form>
@@ -200,16 +199,17 @@
     <!-- Success Overlay -->
     <div class="success-overlay" id="success-overlay">
         <div class="success-content">
-            <div class="success-icon"><i class="fas fa-check"></i></div>
-            <h3 class="success-title">Expense Added!</h3>
-            <p class="success-message">Your expense has been recorded successfully.</p>
+            <div class="success-icon" style="background: var(--success-100); color: var(--success-600);"><i
+                    class="fas fa-check"></i></div>
+            <h3 class="success-title">Income Added!</h3>
+            <p class="success-message">Your income has been recorded successfully.</p>
         </div>
     </div>
 
     <script src="../js/storage.js"></script>
     <script src="../js/utils.js"></script>
     <script src="../js/app.js"></script>
-    <script src="../js/expense-form.js"></script>
+    <script src="../js/income-form.js"></script>
 </body>
 
 </html>

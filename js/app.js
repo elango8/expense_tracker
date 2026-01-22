@@ -31,7 +31,7 @@ const ThemeManager = {
 
     bindEvents() {
         // Theme toggle buttons in header
-        document.querySelectorAll('.theme-toggle').forEach(btn => {
+        document.querySelectorAll('.theme-toggle, .landing-theme-toggle').forEach(btn => {
             btn.addEventListener('click', () => this.toggleTheme());
         });
 
@@ -152,8 +152,54 @@ const Modal = {
     }
 };
 
+/**
+ * Expense Tracker - Authentication Protection
+ * Redirects to signup page if user is not logged in
+ */
+const AuthGuard = {
+    // List of protected pages that require authentication
+    protectedPages: [
+        'dashboard.html',
+        'add-expense.html',
+        'add-income.html',
+        'transactions.html',
+        'analytics.html',
+        'settings.html',
+        'profile.html'
+    ],
+
+    init() {
+        this.checkAuth();
+    },
+
+    isLoggedIn() {
+        return localStorage.getItem('user') !== null;
+    },
+
+    getCurrentPage() {
+        return window.location.pathname.split('/').pop() || 'index.html';
+    },
+
+    isProtectedPage() {
+        const currentPage = this.getCurrentPage();
+        return this.protectedPages.includes(currentPage);
+    },
+
+    checkAuth() {
+        // If on a protected page and not logged in, redirect to signup
+        if (this.isProtectedPage() && !this.isLoggedIn()) {
+            // Store the intended destination so we can redirect after login
+            sessionStorage.setItem('redirectAfterLogin', window.location.href);
+
+            // Redirect to signup page
+            window.location.href = 'signup.html';
+        }
+    }
+};
+
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
+    AuthGuard.init();
     ThemeManager.init();
     Navigation.init();
     Modal.init();

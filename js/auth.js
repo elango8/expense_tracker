@@ -269,8 +269,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             Auth.signup(userData);
 
-            // Redirect to dashboard
-            window.location.href = 'dashboard.html';
+            // Redirect to stored destination or dashboard
+            const redirectUrl = sessionStorage.getItem('redirectAfterLogin');
+            sessionStorage.removeItem('redirectAfterLogin');
+            window.location.href = redirectUrl || 'dashboard.html';
         });
     }
 
@@ -284,8 +286,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             Auth.login(email, password);
 
-            // Redirect to dashboard
-            window.location.href = 'dashboard.html';
+            // Redirect to stored destination or dashboard
+            const redirectUrl = sessionStorage.getItem('redirectAfterLogin');
+            sessionStorage.removeItem('redirectAfterLogin');
+            window.location.href = redirectUrl || 'dashboard.html';
         });
     }
 

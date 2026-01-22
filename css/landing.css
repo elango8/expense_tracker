@@ -104,6 +104,101 @@
     align-items: center;
 }
 
+/* ===== Landing Page Theme Toggle (Icon Style) ===== */
+.landing-theme-toggle {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.landing-theme-toggle:hover {
+    transform: scale(1.1);
+    border-color: var(--primary-400);
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.2);
+}
+
+.landing-theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.toggle-icons {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-sun,
+.toggle-moon {
+    position: absolute;
+    font-size: 18px;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Light mode: Show sun, hide moon */
+.toggle-sun {
+    color: #f59e0b;
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.toggle-moon {
+    color: #6366f1;
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+}
+
+/* Dark mode: Show moon, hide sun */
+[data-theme="dark"] .toggle-sun {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+[data-theme="dark"] .toggle-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    color: #fbbf24;
+}
+
+/* Glow effect */
+.toggle-glow {
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.landing-theme-toggle:hover .toggle-glow {
+    opacity: 1;
+}
+
+[data-theme="dark"] .toggle-glow {
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.3) 0%, transparent 70%);
+}
+
+[data-theme="dark"] .landing-theme-toggle {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+[data-theme="dark"] .landing-theme-toggle:hover {
+    border-color: rgba(251, 191, 36, 0.6);
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.2);
+}
+
 /* Mobile Menu Toggle */
 .mobile-menu-toggle {
     display: none;
@@ -327,6 +422,89 @@
     opacity: 0.3;
     mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+}
+
+/* ===== Dark Theme Hero Enhancements ===== */
+[data-theme="dark"] .hero {
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #0a1628 100%);
+}
+
+[data-theme="dark"] .gradient-orb {
+    opacity: 0.4;
+}
+
+[data-theme="dark"] .orb-1 {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.25) 0%, rgba(56, 142, 60, 0.1) 100%);
+}
+
+[data-theme="dark"] .orb-2 {
+    background: linear-gradient(135deg, rgba(56, 142, 60, 0.2) 0%, rgba(27, 94, 32, 0.08) 100%);
+}
+
+[data-theme="dark"] .orb-3 {
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 183, 77, 0.03) 100%);
+}
+
+[data-theme="dark"] .floating-shape {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .grid-pattern {
+    opacity: 0.1;
+    background-image:
+        linear-gradient(rgba(76, 175, 80, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(76, 175, 80, 0.1) 1px, transparent 1px);
+}
+
+[data-theme="dark"] .preview-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(76, 175, 80, 0.15);
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(76, 175, 80, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .hero-badge {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+[data-theme="dark"] .floating-card {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(76, 175, 80, 0.1);
+}
+
+[data-theme="dark"] .floating-card .card-shine {
+    background: linear-gradient(135deg, transparent 0%, rgba(76, 175, 80, 0.08) 50%, transparent 100%);
+}
+
+[data-theme="dark"] .preview-content {
+    background: rgba(15, 23, 42, 0.5);
+}
+
+[data-theme="dark"] .preview-stat {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .preview-chart {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .chart-bar {
+    background: linear-gradient(180deg, rgba(76, 175, 80, 0.4) 0%, rgba(76, 175, 80, 0.2) 100%);
+}
+
+[data-theme="dark"] .chart-bar.active {
+    background: linear-gradient(180deg, var(--primary-500) 0%, var(--primary-600) 100%);
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
 }
 
 @keyframes float {
@@ -1054,7 +1232,7 @@
 
 .steps-line {
     position: absolute;
-    top: 60px;
+    top: 40px;
     left: 15%;
     right: 15%;
     height: 2px;
@@ -1491,7 +1669,7 @@
     }
 
     .step-content {
-        padding: var(--space-4);
+        padding: var(--space-2);
     }
 }
 

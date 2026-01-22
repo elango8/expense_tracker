@@ -76,6 +76,10 @@ const Dashboard = {
 
     createTransactionItem(transaction) {
         const category = Utils.getCategoryInfo(transaction.category);
+        const isIncome = transaction.type === 'income';
+        const amountClass = isIncome ? 'income' : 'expense';
+        const amountSign = isIncome ? '+' : '-';
+
         return `
             <div class="transaction-item" data-id="${transaction.id}">
                 <div class="transaction-icon ${transaction.category}">
@@ -90,7 +94,7 @@ const Dashboard = {
                     </div>
                 </div>
                 <div class="transaction-amount-wrapper">
-                    <p class="transaction-amount expense">-${Utils.formatCurrency(transaction.amount)}</p>
+                    <p class="transaction-amount ${amountClass}">${amountSign}${Utils.formatCurrency(transaction.amount)}</p>
                     <p class="transaction-date">${Utils.formatDate(transaction.date, 'relative')}</p>
                 </div>
             </div>
